@@ -8,6 +8,16 @@ An Angular library for loading remote components dynamically.
 npm install ngx-remote-component
 ```
 
+### Recommended Module Federation Loader
+
+We strongly recommend using the `ngx-mf-remote-loader` package for Module Federation support:
+
+```bash
+npm install ngx-mf-remote-loader
+```
+
+This package provides optimized loaders for both browser and server environments that work seamlessly with this library.
+
 ## Usage
 
 ### 1. Import the module
