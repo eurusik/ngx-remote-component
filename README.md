@@ -1,6 +1,8 @@
 # ngx-remote-component
 
-An Angular library for loading remote components dynamically.
+An Angular library for loading remote components dynamically in Nx workspaces.
+
+> **Important**: This library is specifically designed for use with [Nx](https://nx.dev/) workspaces and Module Federation. It is not intended for use with standalone Angular applications or other workspace structures.
 
 ## Installation
 
@@ -10,7 +12,7 @@ npm install ngx-remote-component
 
 ### Recommended Module Federation Loader
 
-We strongly recommend using the `ngx-mf-remote-loader` package for Module Federation support:
+This library is designed to work with Nx workspaces and Module Federation. We strongly recommend using the `ngx-mf-remote-loader` package for Module Federation support:
 
 ```bash
 npm install ngx-mf-remote-loader
