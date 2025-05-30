@@ -22,12 +22,14 @@ This package provides optimized loaders for both browser and server environments
 
 ## Usage
 
-### 1. Import the module
+### 1. Configure the module
 
 ```typescript
 import { NgModule } from '@angular/core';
 import { RemoteComponentModule, REMOTE_COMPONENT_LOADER } from 'ngx-remote-component';
 import { RemoteLoaderBrowser, RemoteLoaderServer } from 'ngx-mf-remote-loader';
+import { isPlatformBrowser } from '@angular/common';
+import { PLATFORM_ID, Inject } from '@angular/core';
 
 @NgModule({
   imports: [
@@ -36,10 +38,15 @@ import { RemoteLoaderBrowser, RemoteLoaderServer } from 'ngx-mf-remote-loader';
   providers: [
     {
       provide: REMOTE_COMPONENT_LOADER,
-      // Use RemoteLoaderBrowser for browser environments
-      useClass: RemoteLoaderBrowser
-      // Or use RemoteLoaderServer for server-side rendering
-      // useClass: RemoteLoaderServer
+      useFactory: (platformId: Object) => {
+        // Use RemoteLoaderBrowser for browser environments
+        if (isPlatformBrowser(platformId)) {
+          return new RemoteLoaderBrowser();
+        }
+        // Use RemoteLoaderServer for server-side rendering
+        return new RemoteLoaderServer();
+      },
+      deps: [PLATFORM_ID]
     }
   ]
 })
