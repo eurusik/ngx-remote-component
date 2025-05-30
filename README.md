@@ -15,7 +15,7 @@ npm install ngx-remote-component
 ```typescript
 import { NgModule } from '@angular/core';
 import { RemoteComponentModule, REMOTE_COMPONENT_LOADER } from 'ngx-remote-component';
-import { CustomRemoteComponentLoader } from './custom-remote-component-loader.service';
+import { RemoteLoaderBrowser, RemoteLoaderServer } from 'ngx-mf-remote-loader';
 
 @NgModule({
   imports: [
@@ -24,7 +24,10 @@ import { CustomRemoteComponentLoader } from './custom-remote-component-loader.se
   providers: [
     {
       provide: REMOTE_COMPONENT_LOADER,
-      useClass: CustomRemoteComponentLoader
+      // Use RemoteLoaderBrowser for browser environments
+      useClass: RemoteLoaderBrowser
+      // Or use RemoteLoaderServer for server-side rendering
+      // useClass: RemoteLoaderServer
     }
   ]
 })

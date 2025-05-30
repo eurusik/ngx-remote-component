@@ -21,7 +21,8 @@
   "peerDependencies": {
     "@angular/common": "^17.0.0",
     "@angular/core": "^17.0.0",
-    "rxjs": "^7.0.0"
+    "rxjs": "^7.0.0",
+    "ngx-mf-remote-loader": "^1.0.0"
   },
   "devDependencies": {
     "@angular/common": "^20.0.0",
