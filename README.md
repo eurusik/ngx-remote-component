@@ -12,7 +12,7 @@ npm install ngx-remote-component
 
 ### Recommended Module Federation Loader
 
-This library is designed to work with Nx workspaces and Module Federation. We strongly recommend using the `ngx-mf-remote-loader` package for Module Federation support:
+This library is designed to work with Nx workspaces and Module Federation. We strongly recommend using the [`ngx-mf-remote-loader`](https://github.com/eurusik/ngx-mf-remote-loader) package for Module Federation support:
 
 ```bash
 npm install ngx-mf-remote-loader
