@@ -63,9 +63,9 @@ export class RemoteComponentLoaderDirective implements AfterViewInit, OnDestroy 
    */
   private readonly remoteComponentLoader = inject(REMOTE_COMPONENT_LOADER);
   /**
-   * Subscription to handle cleanup of event listeners.
+   * Array of subscriptions to handle cleanup of event listeners.
    */
-  private subscriptions: Subscription = new Subscription();
+  private subscriptions: Subscription[] = [];
 
   /**
    * Dynamic inputs to pass to the remote component.
@@ -113,7 +113,7 @@ export class RemoteComponentLoaderDirective implements AfterViewInit, OnDestroy 
           const subscription = (value as EventEmitter<any>).subscribe((event: any) => {
             this.outputs.emit({ [key]: event });
           });
-          this.subscriptions.add(subscription);
+          this.subscriptions.push(subscription);
         }
       });
     });
@@ -124,6 +124,10 @@ export class RemoteComponentLoaderDirective implements AfterViewInit, OnDestroy 
    * This is where subscriptions are cleaned up to prevent memory leaks.
    */
   ngOnDestroy(): void {
-    this.subscriptions.unsubscribe();
+    this.subscriptions.forEach(subscription => {
+      subscription.unsubscribe();
+    });
+    
+    this.subscriptions = [];
   }
 }
